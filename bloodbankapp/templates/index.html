@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blood Donation {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+
+  <section id="principle">
+    <h2>Blood when you need it.</h2>
+    <p>Our motto is to help as many people as we can through continuous support and best in class services.
+      <br> We aim to become one of the best blood banks in the state by 2025.</p>
+  </section>
+<div class="container">
+<h1>Available Donors According To Blood Group</h1>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for i in all_group %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm border-danger">
+            <div class="card-body">
+              <h3 class="card-text">Blood Group: {{i.name}}</h3>
+              <h3 class="card-text">Total Donor: {{i.total}}</h3>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="/donors_list/{{i.id}}/" class="btn btn-sm btn-outline-danger">View All Donors</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<section id="features">
+    <div class="row">
+      <div class="col-lg-4 feature-box">
+        <i class="icon fas fa-check-circle fa-4x"></i>
+        <h3>Safe and Secure</h3>
+        <p>We maintain best hygenic practises strictly following SOP for COVID</p>
+      </div>
+      <div class="col-lg-4 feature-box">
+        <i class="icon fas fa-bullseye fa-4x"></i>
+        <h3>Top Rated</h3>
+        <p>We have the best in class labs and storage facility.</p>
+      </div>
+      <div class="col-lg-4 feature-box">
+        <i class="icon fas fa-heart fa-4x"></i>
+        <h3>Best Practices</h3>
+        <p>We ensure top level services and practises.</p>
+      </div>
+    </div>
+  </section>
+{% endblock %}

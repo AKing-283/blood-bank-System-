@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+      <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/39abeea9a1.js" crossorigin="anonymous"></script>
+
+      <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style>
+        .navbar {
+            background-color: #08b5ff;
+        }
+        body {
+            background: url("{% static 'happy-world-blood-donor-day-red-white-black-background-social-media-design-banner-free-vector_1340-21635.jpg' %}") no-repeat center fixed;
+            background-size: cover;
+        }
+        .profile-pic-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .profile-pic-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #features {
+          padding: 7% 10%;
+          background-color: #fff;
+          position: relative;
+        }
+
+        .feature-box {
+          text-align: center;
+          padding: 5%;
+        }
+
+        .icon {
+          color: #65c6e9;
+          margin-bottom: 1rem;
+        }
+
+        .icon:hover {
+          color:#6f9eaf;
+        }
+        #principle {
+          padding: 100px;
+          text-align: center;
+        }
+        .principle-class {
+          padding: 3% 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="/">Blood Bank System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="container w-75">
+                <div class="navbar-nav">
+                    {% if request.user.is_authenticated %}
+                    <a class="nav-item nav-link active" href="/profile/">Profile</a>
+                    <a class="nav-item nav-link active" href="/edit_profile/">Edit Profile</a>
+                    <a class="nav-item nav-link active" href="/see_all_request/">See All Request</a>
+                    <a class="nav-item nav-link active" href="/logout/">Logout</a>
+                    {% else %}
+                    <a class="nav-item nav-link active" href="/">All Donors</a>
+                    <a class="nav-item nav-link active" href="/request_blood/">Request For Blood</a>
+                    <a class="nav-item nav-link active" href="/see_all_request/">See All Request</a>
+                    <a class="nav-item nav-link active" href="/become_donor/">Register As Donor</a>
+                    <a class="nav-item nav-link active" href="/login/">Login</a>
+                    <a class="nav-item nav-link active" href="{% url 'signup' %}">Sign-up</a>
+                    {% endif %}
+                </div>
+                {% if request.user.is_authenticated %}
+                <a href="#" class="nav-item nav-link active" style="color: white;">Welcome {{ request.user }}</a>
+                <div class="profile-pic-container">
+                    <img src="{% if request.user.profile.profile_picture %}{{ request.user.profile.profile_picture.url }}{% else %}{% static 'profile-img.jpg' %}{% endif %}" alt="Profile Picture">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav><br>
+
+    {% block body %}
+    {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    {% block js %}
+    {% endblock %}
+
+  <!-- Footer -->
+  <footer id="footer">
+    <i class="social fab fa-twitter"></i>
+    <i class="social fab fa-facebook-f"></i>
+    <i class="social fab fa-instagram"></i>
+    <i class="social fas fa-envelope"></i>
+    <br><br>
+    <p>© Copyright 2024 XYZ</p>
+    <p>Blood Bank System</p>
+    <p>Developed By: XYZ</p>
+  </footer>
+</body>
+</html>

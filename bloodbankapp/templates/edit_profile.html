@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h2>Edit Profile</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Display the form fields -->
+        <button type="submit" class="btn btn-success">Update Profile</button>
+    </form>
+
+    <!-- Show success or error messages -->
+    {% if messages %}
+        <div class="alert alert-info mt-3">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

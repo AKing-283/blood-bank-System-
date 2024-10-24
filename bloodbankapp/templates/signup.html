@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h2>Sign Up</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number">
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+        </div>
+
+        <div class="mb-3">
+            <label for="user_type" class="form-label">I am a</label>
+            <select class="form-control" id="user_type" name="user_type">
+                <option value="donor">Donor</option>
+                <option value="hospital">Hospital</option>
+            </select>
+        </div>
+
+        <!-- Show blood group field only for donors -->
+        <div class="mb-3" id="blood_group_field">
+            <label for="blood_group" class="form-label">Blood Group</label>
+            <input type="text" class="form-control" id="blood_group" name="blood_group" placeholder="Enter Blood Group">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+</div>
+
+
+{% endblock %}
