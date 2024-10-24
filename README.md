@@ -27,7 +27,7 @@ Git
 Clone the Repository
 bash
 Copy code
-git clone https://github.com/yourusername/blood-bank-System-.git
+git clone https://github.com/aking-283/blood-bank-System-.git
 cd blood-bank-System-
 Set Up Virtual Environment
 bash
